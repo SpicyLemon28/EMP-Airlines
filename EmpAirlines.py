@@ -41,7 +41,7 @@ def FlightForm():
 		cursor = connection.cursor()
 		mysql_insert_query = "INSERT INTO flightForm VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
-		recordUser = (flyingTo,flyingTo,departingOn,returningOn,departureTime,returningTime,fullName,email,phone,nationality,gender,passportNo,passportExpiryDate)
+		recordUser = (flyingFrom,flyingTo,departingOn,returningOn,departureTime,returningTime,fullName,email,phone,nationality,gender,passportNo,passportExpiryDate)
 		cursor.execute(mysql_insert_query, recordUser)
 		connection.commit()
 		ClearFields()
@@ -182,72 +182,80 @@ def FlightList():
 	cursor.close()
 	space=50
 
+	def ShowStart():
+		flight.withdraw()
+		root.update()
+		root.deiconify()
+
+	bckBtn = Button(flightlist, text='Back', width=10, fg='orange', font=('bold', 15), command=ShowStart)
+	bckBtn.grid(row=0,column=0, padx=3, pady=5)
+
 	lblFlyingFrom = Label(flightlist, text='Flying\nFrom', font=('bold', 15))
-	lblFlyingFrom.grid(row=0, column=0)
+	lblFlyingFrom.grid(row=1, column=0, pady=10)
 	lblFlyingTo = Label(flightlist, text='Flying\nTo', font=('bold', 15))
-	lblFlyingTo.grid(row=0, column=1, padx=10)
+	lblFlyingTo.grid(row=1, column=1, padx=10, pady=10)
 	lblDepartingOn = Label(flightlist, text='Departing\nOn', font=('bold', 15))
-	lblDepartingOn.grid(row=0, column=2, padx=10)
+	lblDepartingOn.grid(row=1, column=2, padx=10, pady=10)
 	lblReturningOn = Label(flightlist, text='Returning\n On', font=('bold', 15))
-	lblReturningOn.grid(row=0, column=3, padx=10)
+	lblReturningOn.grid(row=1, column=3, padx=10, pady=10)
 	lblDepartureTime = Label(flightlist, text='Departure\nTime', font=('bold', 15))
-	lblDepartureTime.grid(row=0, column=4, padx=10)
+	lblDepartureTime.grid(row=1, column=4, padx=10, pady=10)
 	lblReturningTime = Label(flightlist, text='Returning\nTime', font=('bold', 15))
-	lblReturningTime.grid(row=0, column=5, padx=10)
+	lblReturningTime.grid(row=1, column=5, padx=10, pady=10)
 	lblFullName = Label(flightlist, text='Full\nName', font=('bold', 15))
-	lblFullName.grid(row=0, column=6, padx=20)
+	lblFullName.grid(row=1, column=6, padx=20, pady=10)
 	lblEmail = Label(flightlist, text='Email', font=('bold', 15))
-	lblEmail.grid(row=0, column=7, padx=10)
+	lblEmail.grid(row=1, column=7, padx=10, pady=10)
 	lblPhone = Label(flightlist, text='Phone', font=('bold', 15))
-	lblPhone.grid(row=0, column=8, padx=20)
+	lblPhone.grid(row=1, column=8, padx=20, pady=10)
 	lblNationality = Label(flightlist, text='Nation-\nality', font=('bold', 15))
-	lblNationality.grid(row=0, column=9, padx=10)
+	lblNationality.grid(row=1, column=9, padx=10, pady=10)
 	lblGender = Label(flightlist, text='Gender', font=('bold', 15))
-	lblGender.grid(row=0, column=10, padx=10)
+	lblGender.grid(row=1, column=10, padx=10, pady=10)
 	lblPassport = Label(flightlist, text='Passport\nNo', font=('bold', 15))
-	lblPassport.grid(row=0, column=11, padx=10)
+	lblPassport.grid(row=1, column=11, padx=10, pady=10)
 	lblPassportExp = Label(flightlist, text='Passport\nExpiry Date', font=('bold', 15))
-	lblPassportExp.grid(row=0, column=12, padx=10)
+	lblPassportExp.grid(row=1, column=12, padx=10, pady=10)
 
 	for a in result:
 		flight_list = Label(flightlist, text=a[0], font=10)
-		flight_list.grid(row=1, column=0)
+		flight_list.grid(row=2+space, column=0)
 
 		flight_list = Label(flightlist, text=a[1], font=10)
-		flight_list.grid(row=1, column=1)
+		flight_list.grid(row=2+space, column=1)
 
 		flight_list = Label(flightlist, text=a[2], font=10)
-		flight_list.grid(row=1, column=2)
+		flight_list.grid(row=2+space, column=2)
 
 		flight_list = Label(flightlist, text=a[3], font=10)
-		flight_list.grid(row=1, column=3)
+		flight_list.grid(row=2+space, column=3)
 
 		flight_list = Label(flightlist, text=a[4], font=10)
-		flight_list.grid(row=1, column=4)
+		flight_list.grid(row=2+space, column=4)
 
 		flight_list = Label(flightlist, text=a[5], font=10)
-		flight_list.grid(row=1, column=5)
+		flight_list.grid(row=2+space, column=5)
 
 		flight_list = Label(flightlist, text=a[6], font=10)
-		flight_list.grid(row=1, column=6)
+		flight_list.grid(row=2+space, column=6)
 
 		flight_list = Label(flightlist, text=a[7], font=10)
-		flight_list.grid(row=1, column=7)
+		flight_list.grid(row=2+space, column=7)
 
 		flight_list = Label(flightlist, text=a[8], font=10)
-		flight_list.grid(row=1, column=8)
+		flight_list.grid(row=2+space, column=8)
 
 		flight_list = Label(flightlist, text=a[9], font=10)
-		flight_list.grid(row=1, column=9)
+		flight_list.grid(row=2+space, column=9)
 
 		flight_list = Label(flightlist, text=a[10], font=10)
-		flight_list.grid(row=1, column=10)
+		flight_list.grid(row=2+space, column=10)
 
 		flight_list = Label(flightlist, text=a[11], font=10)
-		flight_list.grid(row=1, column=11)
+		flight_list.grid(row=2+space, column=11)
 
 		flight_list = Label(flightlist, text=a[12], font=10)
-		flight_list.grid(row=1, column=12)
+		flight_list.grid(row=2+space, column=12)
 		space = space + 50
 
 
