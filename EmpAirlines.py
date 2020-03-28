@@ -23,20 +23,20 @@ def FlightForm():
 		root.deiconify()
 
 	def CreateFlight():
-		flyingFrom 		= entryFrom.get()
-		flyingTo 		= entryTo.get()
-		departingOn 	= entryDepOn.get()
-		returningOn 	= entryRetOn.get()
-		departureTime	= entryDepTime.get()
-		returningTime 	= entryRetTime.get()
+		flyingFrom 	= entryFrom.get()
+		flyingTo 	= entryTo.get()
+		departingOn = entryDepOn.get()
+		returningOn = entryRetOn.get()
+		departureTime = entryDepTime.get()
+		returningTime = entryRetTime.get()
 
-		fullName 			= entryName.get()
-		email 				= entryEmail.get()
-		phone 				= entryPhone.get()
-		nationality 		= entryNtnlty.get()
-		gender 				= entryGndr.get()
-		passportNo 			= entryPsprt.get()
-		passportExpiryDate 	= entryPsprtExp.get()
+		fullName = entryName.get()
+		email = entryEmail.get()
+		phone = entryPhone.get()
+		nationality = entryNtnlty.get()
+		gender = entryGndr.get()
+		passportNo = entryPsprt.get()
+		passportExpiryDate = entryPsprtExp.get()
 
 		cursor = connection.cursor()
 		mysql_insert_query = "INSERT INTO flightForm VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
@@ -65,7 +65,7 @@ def FlightForm():
 
 	root.withdraw()
 	flight = tk.Toplevel(root)
-	flight.geometry('1000x500')
+	flight.geometry('1000x600')
 	flight.title('EMP Airlines - Flight Form')
 
 	bckBtn = Button(flight, text='Back', width=10, fg='orange', font=('bold', 15), command=ShowStart)
@@ -103,7 +103,6 @@ def FlightForm():
 	lblRetTime.grid(row=7, column=0)
 	entryRetTime = Entry(frame)
 	entryRetTime.grid(row=7, column=1, pady=10)
-
 
 	frame1 = LabelFrame(flight, text='Personal Information')
 	frame1.grid(row=1, column=2, padx=20, pady=20)
@@ -183,7 +182,7 @@ def FlightList():
 	space=50
 
 	def ShowStart():
-		flight.withdraw()
+		flightlist.withdraw()
 		root.update()
 		root.deiconify()
 
@@ -211,7 +210,7 @@ def FlightList():
 	lblNationality = Label(flightlist, text='Nation-\nality', font=('bold', 15))
 	lblNationality.grid(row=1, column=9, padx=10, pady=10)
 	lblGender = Label(flightlist, text='Gender', font=('bold', 15))
-	lblGender.grid(row=1, column=10, padx=10, pady=10)
+	lblGender.grid(row=1, column=10, padx=10)
 	lblPassport = Label(flightlist, text='Passport\nNo', font=('bold', 15))
 	lblPassport.grid(row=1, column=11, padx=10, pady=10)
 	lblPassportExp = Label(flightlist, text='Passport\nExpiry Date', font=('bold', 15))
@@ -257,10 +256,6 @@ def FlightList():
 		flight_list = Label(flightlist, text=a[12], font=10)
 		flight_list.grid(row=2+space, column=12)
 		space = space + 50
-
-
-
-
 
 
 #StartPage
